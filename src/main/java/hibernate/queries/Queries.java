@@ -1,11 +1,8 @@
 package hibernate.queries;
 import hibernate.model.Actor;
-import hibernate.model.Film;
-import hibernate.model.Director;
-import hibernate.model.Cast;
-import hibernate.model.Crew;
+import hibernate.model.Film_Cast;
+
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 

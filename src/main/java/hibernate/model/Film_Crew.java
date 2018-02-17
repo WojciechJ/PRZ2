@@ -8,9 +8,9 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Crew", uniqueConstraints = {
+@Table(name = "FILM_CREW", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
-public class Crew {
+public class Film_Crew {
 
     @Id @GeneratedValue
     @Column(name = "Id")
@@ -19,10 +19,10 @@ public class Crew {
     @Column(name = "film_id")
     private Integer filmid;
 
-    @Column(name = "employee")
+    @Column(name = "employee_id")
     private Integer employeeid;
 
-    public Crew() {}
+    public Film_Crew(){}
 
     public int getId() {
         return id;

@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "employees", uniqueConstraints = {
+@Table(name = "EMPLOYEES", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
 public class Employee {
 

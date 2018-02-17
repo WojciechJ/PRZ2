@@ -1,19 +1,14 @@
 package hibernate;
 import hibernate.model.Actor;
-import hibernate.model.Crew;
-import hibernate.model.Cast;
 import hibernate.model.Film;
 import hibernate.model.Director;
 import hibernate.model.Employee;
-import hibernate.queries.Queries;
+import hibernate.model.Film_Crew;
+import hibernate.model.Film_Cast;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 
 class Manager {
@@ -21,13 +16,16 @@ class Manager {
     public static void main(String[] args) {
 
         System.out.println("Start");
+
         EntityManager entityManager = null;
+
         EntityManagerFactory entityManagerFactory = null;
 
         try {
 
             entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-dynamic");
             entityManager = entityManagerFactory.createEntityManager();
+
             entityManager.getTransaction().begin();
 
             //add actors
@@ -57,7 +55,9 @@ class Manager {
             entityManager.persist(act3);
             entityManager.persist(act4);
 
+            entityManager.getTransaction().commit();
 
+            entityManager.getTransaction().begin();
             //add directors
             Director dir1 = new Director();
             dir1.setFirstName("Peter Robert");
@@ -72,9 +72,9 @@ class Manager {
             //save directors
             entityManager.persist(dir1);
             entityManager.persist(dir2);
+            entityManager.getTransaction().commit();
 
-
-
+            entityManager.getTransaction().begin();
             //add employees
             Employee emp1 = new Employee();
             emp1.setFirstName("John");
@@ -96,10 +96,9 @@ class Manager {
             entityManager.persist(emp1);
             entityManager.persist(emp2);
             entityManager.persist(emp3);
+            entityManager.getTransaction().commit();
 
-
-
-
+            entityManager.getTransaction().begin();
             //add films
             Film film1 = new Film();
             film1.setTitle("War for the Planet of the Apes");
@@ -130,47 +129,67 @@ class Manager {
             entityManager.persist(film2);
             entityManager.persist(film3);
             entityManager.persist(film4);
+            entityManager.getTransaction().commit();
 
+            entityManager.getTransaction().begin();
+            //add crew
+            Film_Crew crw1 = new Film_Crew();
+            crw1.setFilmid(1);
+            crw1.setEmployeeid(1);
 
+            Film_Crew crw2 = new Film_Crew();
+            crw2.setFilmid(1);
+            crw2.setEmployeeid(2);
 
+            Film_Crew crw3 = new Film_Crew();
+            crw3.setFilmid(1);
+            crw3.setEmployeeid(3);
+
+            //save crew
+            entityManager.persist(crw1);
+            entityManager.persist(crw2);
+            entityManager.persist(crw3);
+            entityManager.getTransaction().commit();
+
+            entityManager.getTransaction().begin();
             //add cast
-            Cast cc1 = new Cast();
+            Film_Cast cc1 = new Film_Cast();
             cc1.setActorid(4);
             cc1.setFilmid(1);
-            Cast cc2 = new Cast();
+            Film_Cast cc2 = new Film_Cast();
             cc2.setActorid(4);
             cc2.setFilmid(2);
-            Cast cc3 = new Cast();
+            Film_Cast cc3 = new Film_Cast();
             cc3.setActorid(4);
             cc3.setFilmid(3);
-            Cast cc4 = new Cast();
+            Film_Cast cc4 = new Film_Cast();
             cc4.setActorid(4);
             cc4.setFilmid(4);
-            Cast cc5 = new Cast();
+            Film_Cast cc5 = new Film_Cast();
             cc5.setActorid(1);
             cc5.setFilmid(1);
-            Cast cc6 = new Cast();
+            Film_Cast cc6 = new Film_Cast();
             cc6.setActorid(1);
             cc6.setFilmid(2);
-            Cast cc7 = new Cast();
+            Film_Cast cc7 = new Film_Cast();
             cc7.setActorid(1);
             cc7.setFilmid(3);
-            Cast cc8 = new Cast();
+            Film_Cast cc8 = new Film_Cast();
             cc8.setActorid(2);
             cc8.setFilmid(1);
-            Cast cc9 = new Cast();
+            Film_Cast cc9 = new Film_Cast();
             cc9.setActorid(2);
             cc9.setFilmid(2);
-            Cast cc10 = new Cast();
+            Film_Cast cc10 = new Film_Cast();
             cc10.setActorid(2);
             cc10.setFilmid(3);
-            Cast cc11 = new Cast();
+            Film_Cast cc11 = new Film_Cast();
             cc11.setActorid(3);
             cc11.setFilmid(3);
-            Cast cc12 = new Cast();
+            Film_Cast cc12 = new Film_Cast();
             cc12.setActorid(3);
             cc12.setFilmid(2);
-            Cast cc13 = new Cast();
+            Film_Cast cc13 = new Film_Cast();
             cc13.setActorid(3);
             cc13.setFilmid(1);
 
@@ -189,49 +208,15 @@ class Manager {
             entityManager.persist(cc12);
             entityManager.persist(cc13);
 
-
-            //add crew
-            Crew crw1 = new Crew();
-            crw1.setFilmid(1);
-            crw1.setEmployeeid(1);
-            Crew crw2 = new Crew();
-            crw2.setFilmid(1);
-            crw2.setEmployeeid(2);
-            Crew crw3 = new Crew();
-            crw3.setFilmid(1);
-            crw3.setEmployeeid(3);
-
-            //save crew
-            entityManager.persist(crw1);
-            entityManager.persist(crw2);
-            entityManager.persist(crw3);
-
-
-            Actor actor = entityManager.find(Actor.class, act1.getId());
-            if (actor == null) {
-                System.out.println(act1.getFirstName()+ act1.getLastName() + " not found! ");
-            } else {
-                System.out.println("Found: " + actor);
-            }
-            Director director = entityManager.find(Director.class, dir1.getId());
-            if (director == null) {
-                System.out.println(dir1.getFirstName()+ dir1.getLastName() + " not found! ");
-            } else {
-                System.out.println("Found: " + director);
-            }
-            Film film = entityManager.find(Film.class, film1.getId());
-            if (director == null) {
-                System.out.println(film1.getTitle() + " not found! ");
-            } else {
-                System.out.println("Found: " + film);
-            }
-
             entityManager.getTransaction().commit();
+
 
             System.out.println("Done");
 
             entityManager.close();
+
         } catch (Throwable ex) {
+            // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
         } finally {
             entityManagerFactory.close();

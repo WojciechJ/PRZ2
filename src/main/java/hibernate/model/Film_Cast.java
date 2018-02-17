@@ -8,21 +8,21 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Cast", uniqueConstraints = {
+@Table(name = "FILM_CAST", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
-public class Cast {
+public class Film_Cast {
 
     @Id @GeneratedValue
     @Column(name = "Id")
     private int id;
 
     @Column(name = "film_id")
-    private Integer filmid;
+    private Integer film_id;
 
     @Column(name = "actor_id")
-    private Integer actorid;
+    private Integer actor_id;
 
-    public Cast() {}
+    public Film_Cast(){}
 
     public int getId() {
         return id;
@@ -31,11 +31,10 @@ public class Cast {
         this.id = id;
     }
 
-    public Integer getFilmid() { return filmid; }
-    public void setFilmid (Integer filmid ) { this.filmid = filmid; }
+    public Integer getFilmid() { return film_id; }
+    public void setFilmid (Integer film_id ) { this.film_id = film_id; }
 
-    public Integer getActorid() { return actorid; }
-    public void setActorid (Integer actorid ) { this.actorid = actorid; }
-
+    public Integer getActorid(){ return actor_id; }
+    public void setActorid( Integer actor_id) { this.actor_id = actor_id; }
 
 }
