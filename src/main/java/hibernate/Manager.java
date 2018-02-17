@@ -1,13 +1,13 @@
 package hibernate;
 
-import hibernate.model.Address;
-import hibernate.model.Employee;
+import hibernate.model.Actor;
+import hibernate.model.Film;
 import hibernate.queries.Queries;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,47 +31,51 @@ class Manager {
 
             entityManager.getTransaction().begin();
 
-            //add 1
-            Employee emp = new Employee();
-            emp.setFirstName("Jan");
-            emp.setLastName("Polak" + new Random().nextInt());
-            emp.setSalary(100);
-            emp.setPesel(new Random().nextInt());
+            //add actors
+            Actor act = new Actor();
+            act.setFirstName("Janusz");
+            act.setLastName("Aktor" + new Random().nextInt());
+            act.setDate_of_birth(ZonedDateTime.parse("1992-12-03"));
 
-            //add 2
-            Employee emp2 = new Employee();
-            emp2.setFirstName("Roman");
-            emp2.setLastName("Polak" + new Random().nextInt());
-            emp2.setSalary(100);
-            emp2.setPesel(new Random().nextInt());
+            Actor act2 = new Actor();
+            act2.setFirstName("Janusz");
+            act2.setLastName("Aktor" + new Random().nextInt());
+            act2.setDate_of_birth(ZonedDateTime.parse("1992-12-03"));
 
-            //save 2
-            entityManager.persist(emp2);
+            //save
+            entityManager.persist(act);
+            entityManager.persist(act2);
 
-            //add address
-            Address address = new Address();
-            address.setCity("poznan");
-            address.setStreet("poznanska");
-            address.setNr("1");
-            address.setPostcode("99090");
+            //add films
+            Film film = new Film();
+            film.setTitle("The Lord of The Rings: Two Towers");
+            film.setPremiereDate(ZonedDateTime.parse("2002-01-31"));
+            film.setDirector(1);
+            film.setGenre("Fanatsy, Drama, Action");
+            film.setBoxOffice(2557391.17);
 
-            emp.setAddress(address);
-            emp2.setAddress(address);
-            emp.getSubworkers().add(emp2);
+            Film film2 = new Film();
+            film.setTitle("The Lord of the Rings: The Return of the King ");
+            film.setPremiereDate(ZonedDateTime.parse("2004-01-04"));
+            film.setDirector(1);
+            film.setGenre("Fanatsy, Drama, Action");
+            film.setBoxOffice(5957381.19);
 
-            entityManager.persist(address);
-            entityManager.persist(emp);
+            //save
+            entityManager.persist(film);
+            entityManager.persist(film2);
 
-            Employee employee = entityManager.find(Employee.class, emp.getId());
-            if (employee == null) {
-                System.out.println(emp.getId() + " not found! ");
+
+            Actor actor = entityManager.find(Actor.class, act.getId());
+            if (actor == null) {
+                System.out.println(act.getId() + " not found! ");
             } else {
-                System.out.println("Found " + employee);
+                System.out.println("Found: " + actor);
             }
 
-            System.out.println("Employee " + employee.getId() + " " + employee.getFirstName() + employee.getLastName());
+            System.out.println("Actor: " + actor.getId() + " " + actor.getFirstName() + actor.getLastName());
 
-            changeFirstGuyToNowak(entityManager);
+           // changeFirstGuyToNowak(entityManager);
 
             entityManager.getTransaction().commit();
 
@@ -89,12 +93,12 @@ class Manager {
     }
 
     // read a page of empleyees and change first one to Nowak
-    static void changeFirstGuyToNowak(EntityManager entityManager) {
+    //static void changeFirstGuyToNowak(EntityManager entityManager) {
 
-        Query query = entityManager.createQuery("SELECT k FROM Employee k");
-        List<Employee> employees = new Queries(entityManager).getAllEmployeeByPage(1);
+      //  Query query = entityManager.createQuery("SELECT k FROM Employee k");
+     //   List<Actor> actors = new Queries(entityManager).getAllEmployeeByPage(1);
 
-        employees.get(0).setLastName("NowakPRE" + new Random().nextInt());
+     //   actors.get(0).setLastName("NowakPRE" + new Random().nextInt());
 
     }
 

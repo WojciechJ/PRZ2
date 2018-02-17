@@ -21,7 +21,7 @@ public class Queries {
         return query.setParameter("name", name).getResultList();
     }
 
-    public List<Employee> getAllEmployeeByPage(int pagenr) {
+    public List<Actors> getAllEmployeeByPage(int pagenr) {
         //calculate total number
         Query queryTotal = entityManager.createQuery
                 ("Select count(f) from Employee f");
