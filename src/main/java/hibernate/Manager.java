@@ -11,7 +11,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.ZonedDateTime;
 
-
 class Manager {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -262,6 +261,7 @@ class Manager {
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
         } finally {
+            assert entityManagerFactory != null;
             entityManagerFactory.close();
         }
 

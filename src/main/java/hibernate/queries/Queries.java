@@ -1,7 +1,5 @@
 package hibernate.queries;
 import hibernate.model.Actor;
-import hibernate.model.Film_Cast;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
