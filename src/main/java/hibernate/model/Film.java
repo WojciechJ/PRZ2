@@ -22,8 +22,8 @@ public class Film {
     @Column(name = "premiere_date")
     private ZonedDateTime premiereDate;
 
-    @Column(name = "director")
-    private Integer director;
+    @Column(name = "directorid")
+    private Integer directorid;
 
     @Column(name = "genre")
     private String genre;
@@ -46,11 +46,6 @@ public class Film {
     }
     public void setTitle( String title ) { this.title = title; }
 
-    public Integer getDirector() { return director; }
-    public void setDirector( Integer director ) {
-        this.director = director;
-    }
-
     public String getGenre() { return genre; }
     public void setGenre( String genre ){ this.genre = genre; }
 
@@ -63,6 +58,9 @@ public class Film {
     public void setPremiereDate( ZonedDateTime premiereDate ) {
         this.premiereDate = premiereDate;
     }
+
+    public Integer getDirectorid(){ return directorid; }
+    public void setDirectorid( Integer directorid) { this.directorid = directorid; }
 
 
 

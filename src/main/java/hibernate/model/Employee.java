@@ -8,9 +8,9 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "ACTORS", uniqueConstraints = {
+@Table(name = "employees", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
-public class Actor {
+public class Employee {
 
     @Id @GeneratedValue
     @Column(name = "Id")
@@ -25,8 +25,11 @@ public class Actor {
     @Column(name = "date_of_birth")
     private ZonedDateTime dateofbirth;
 
+    @Column(name = "profession")
+    private String profession;
 
-    public Actor() {}
+
+    public Employee(){}
 
     public int getId() {
         return id;
@@ -49,12 +52,15 @@ public class Actor {
         this.lastName = last_name;
     }
 
-    public ZonedDateTime getDate_of_Birth() {
+    public ZonedDateTime getDateofbirth() {
         return dateofbirth;
     }
-    public void setDate_of_birth( ZonedDateTime dateofbirth ) {
+    public void setDateofbirth( ZonedDateTime dateofbirth ) {
         this.dateofbirth = dateofbirth;
     }
+
+    public String getProfession(){return profession;}
+    public void setProfession(String profession){this.profession = profession;}
 
 
 

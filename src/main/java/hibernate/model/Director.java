@@ -8,9 +8,9 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "ACTORS", uniqueConstraints = {
+@Table(name = "directors", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
-public class Actor {
+public class Director {
 
     @Id @GeneratedValue
     @Column(name = "Id")
@@ -26,7 +26,7 @@ public class Actor {
     private ZonedDateTime dateofbirth;
 
 
-    public Actor() {}
+    public Director(){}
 
     public int getId() {
         return id;

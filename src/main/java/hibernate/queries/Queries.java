@@ -1,7 +1,9 @@
 package hibernate.queries;
-
-import hibernate.model.Employee;
-
+import hibernate.model.Actor;
+import hibernate.model.Film;
+import hibernate.model.Director;
+import hibernate.model.Cast;
+import hibernate.model.Crew;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -15,29 +17,11 @@ public class Queries {
         this.entityManager = entityManager;
     }
 
-    public List<Employee> getEmployeeByName(String name) {
-        TypedQuery<Employee> query = entityManager.createQuery(
-                "SELECT c FROM Employee c WHERE c.lastName LIKE :name", Employee.class);
+    public List<Actor> getActorByName(String name) {
+        TypedQuery<Actor> query = entityManager.createQuery(
+                "SELECT c FROM Actor c WHERE c.lastName LIKE :name", Actor.class);
         return query.setParameter("name", name).getResultList();
     }
 
-    public List<Actors> getAllEmployeeByPage(int pagenr) {
-        //calculate total number
-        Query queryTotal = entityManager.createQuery
-                ("Select count(f) from Employee f");
-        long countResult = (long)queryTotal.getSingleResult();
 
-        //create query
-        Query query = entityManager.createQuery("Select e FROM Employee e");
-        //set pageSize
-        int pageSize = 10;
-        //calculate number of pages
-        int pageNumber = (int) ((countResult / pageSize) + 1);
-
-        if (pagenr > pageNumber) pagenr = pageNumber;
-        query.setFirstResult((pagenr-1) * pageSize);
-        query.setMaxResults(pageSize);
-
-        return query.getResultList();
-    }
 }
