@@ -26,7 +26,7 @@ public class Employee {
     private ZonedDateTime dateofbirth;
 
     @Column(name = "profession")
-    private String profession;
+    private Integer profession;
 
 
     public Employee(){}
@@ -59,8 +59,8 @@ public class Employee {
         this.dateofbirth = dateofbirth;
     }
 
-    public String getProfession(){return profession;}
-    public void setProfession(String profession){this.profession = profession;}
+    public Integer getProfession(){return profession;}
+    public void setProfession(Integer profession){this.profession = profession;}
 
 
 
