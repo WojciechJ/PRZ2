@@ -126,7 +126,7 @@ class Manager {
             System.out.println(ANSI_GREEN + "Employees: End" + ANSI_RESET + "\n");
 
             //-----------------------------------MOVIES--------------------------------------
-            System.out.println(ANSI_RED + "Films: Start" + ANSI_RESET);
+            System.out.println(ANSI_RED + "Movies: Start" + ANSI_RESET);
             entityManager.getTransaction().begin();
 
                 Movie movie1 = new Movie();
@@ -162,25 +162,28 @@ class Manager {
                 entityManager.persist(movie4);
 
             entityManager.getTransaction().commit();
-            System.out.println(ANSI_GREEN + "Films: End" + ANSI_RESET + "\n");
+            System.out.println(ANSI_GREEN + "Movies: End" + ANSI_RESET + "\n");
             //-----------------------------------CREW-------------------------------------------
             System.out.println(ANSI_RED + "Crew: Start" + ANSI_RESET);
             entityManager.getTransaction().begin();
 
                 Movie_Crew crw1 = new Movie_Crew();
-                    crw1.setFilmid(1);
-                    crw1.setEmployeeid(1);
+                    movie1.getMovie().add(crw1);
+                    emp1.getEmployee().add(crw1);
                 entityManager.persist(crw1);
+                entityManager.persist(emp1);
 
                 Movie_Crew crw2 = new Movie_Crew();
-                    crw2.setFilmid(1);
-                    crw2.setEmployeeid(2);
+                    movie1.getMovie().add(crw2);
+                    emp2.getEmployee().add(crw2);
                 entityManager.persist(crw2);
+                entityManager.persist(emp2);
 
                 Movie_Crew crw3 = new Movie_Crew();
-                    crw3.setFilmid(1);
-                    crw3.setEmployeeid(3);
+                    movie1.getMovie().add(crw3);
+                    emp3.getEmployee().add(crw2);
                 entityManager.persist(crw3);
+                entityManager.persist(emp3);
 
             entityManager.getTransaction().commit();
             System.out.println(ANSI_GREEN + "Crew: End" + ANSI_RESET + "\n");
@@ -191,67 +194,67 @@ class Manager {
 
                 Movie_Cast cc1 = new Movie_Cast();
                     cc1.setActorid(4);
-                    cc1.setFilmid(1);
+                    cc1.setMovie_id(1);
                 entityManager.persist(cc1);
 
                 Movie_Cast cc2 = new Movie_Cast();
                     cc2.setActorid(4);
-                    cc2.setFilmid(2);
+                    cc2.setMovie_id(2);
                 entityManager.persist(cc2);
 
                 Movie_Cast cc3 = new Movie_Cast();
                     cc3.setActorid(4);
-                    cc3.setFilmid(3);
+                    cc3.setMovie_id(3);
                 entityManager.persist(cc3);
 
                 Movie_Cast cc4 = new Movie_Cast();
                     cc4.setActorid(4);
-                    cc4.setFilmid(4);
+                    cc4.setMovie_id(4);
                 entityManager.persist(cc4);
 
                 Movie_Cast cc5 = new Movie_Cast();
                     cc5.setActorid(1);
-                    cc5.setFilmid(1);
+                    cc5.setMovie_id(1);
                 entityManager.persist(cc5);
 
                 Movie_Cast cc6 = new Movie_Cast();
                     cc6.setActorid(1);
-                    cc6.setFilmid(2);
+                    cc6.setMovie_id(2);
                 entityManager.persist(cc6);
 
                 Movie_Cast cc7 = new Movie_Cast();
                     cc7.setActorid(1);
-                    cc7.setFilmid(3);
+                    cc7.setMovie_id(3);
                 entityManager.persist(cc7);
 
                 Movie_Cast cc8 = new Movie_Cast();
                     cc8.setActorid(2);
-                    cc8.setFilmid(1);
+                    cc8.setMovie_id(1);
                 entityManager.persist(cc8);
 
                 Movie_Cast cc9 = new Movie_Cast();
                     cc9.setActorid(2);
-                    cc9.setFilmid(2);
+                    cc9.setMovie_id(2);
                 entityManager.persist(cc9);
 
                 Movie_Cast cc10 = new Movie_Cast();
                     cc10.setActorid(2);
-                    cc10.setFilmid(3);
+                    cc10.setMovie_id(3);
                 entityManager.persist(cc10);
 
                 Movie_Cast cc11 = new Movie_Cast();
                     cc11.setActorid(3);
-                    cc11.setFilmid(3);
+                    cc11.setMovie_id(3);
                 entityManager.persist(cc11);
 
                 Movie_Cast cc12 = new Movie_Cast();
                     cc12.setActorid(3);
-                    cc12.setFilmid(2);
+                    cc12.setMovie_id(2);
                 entityManager.persist(cc12);
 
                 Movie_Cast cc13 = new Movie_Cast();
                     cc13.setActorid(3);
-                    cc13.setFilmid(1);
+                    cc13.setMovie_id(1);
                 entityManager.persist(cc12);
 
             entityManager.getTransaction().commit();

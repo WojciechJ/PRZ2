@@ -1,5 +1,7 @@
 package hibernate.model;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "MOVIE_CREW", uniqueConstraints = {
@@ -10,11 +12,11 @@ public class Movie_Crew {
     @Column(name = "Id")
     private int id;
 
-    @Column(name = "film_id")
-    private Integer filmid;
+    @ManyToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    private List<Movie_Crew> employeesid = new ArrayList<>();
 
-    @Column(name = "employee_id")
-    private Integer employeeid;
+    @ManyToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    private List<Movie_Crew> moviesid = new ArrayList<>();
 
     public Movie_Crew(){}
 
@@ -25,10 +27,11 @@ public class Movie_Crew {
         this.id = id;
     }
 
-    public Integer getFilmid() { return filmid; }
-    public void setFilmid (Integer filmid ) { this.filmid = filmid; }
+    public List<Movie_Crew> getMovieId(){ return moviesid; }
+    public void setMovieId( List<Movie_Crew> moviesid) { this.moviesid = moviesid; }
 
-    public Integer getEmployeeid(){ return employeeid; }
-    public void setEmployeeid( Integer employeeid) { this.employeeid = employeeid; }
+
+    public List<Movie_Crew> getEmployeeid(){ return employeesid; }
+    public void setEmployeeid( List<Movie_Crew> employeesid) { this.employeesid = employeesid; }
 
 }

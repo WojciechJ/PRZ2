@@ -1,6 +1,8 @@
 package hibernate.model;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "EMPLOYEES", uniqueConstraints = {
@@ -23,6 +25,12 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profession", referencedColumnName = "id")
     Profession profession;
+
+    @ManyToMany(fetch = FetchType.EAGER ,mappedBy = "employeesid",cascade = CascadeType.ALL)
+    private List<Movie_Crew> employees= new ArrayList<>();
+
+    public List<Movie_Crew> getEmployee(){ return employees; }
+    public void setEmployee( List<Movie_Crew> employees) { this.employees = employees; }
 
     public Employee(){}
 
