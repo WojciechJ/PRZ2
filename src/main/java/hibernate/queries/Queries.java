@@ -20,6 +20,13 @@ public class Queries {
         this.entityManager = entityManager;
     }
 
+
+    public List<Actor> getActorList(){
+        String hql = "select ac from Actor ac";
+        Query result = entityManager.createQuery(hql);
+        return  result.getResultList();
+    }
+
     public List<Movie_Cast> CountActorsByMovieId(int movie_id) {
         String hql = "Select count(mc) from Movie_Cast mc where mc.movie_id = ?";
         Query result = entityManager.createQuery(hql).setParameter(0,movie_id);

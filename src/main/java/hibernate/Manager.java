@@ -10,29 +10,20 @@ import hibernate.queries.Queries;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Random;
+
 
 class Manager {
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
-    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
-    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_BLACK = "\u001B[30m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_YELLOW = "\u001B[33m";
+    private static final String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
-    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
-    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
-    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
-    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    private static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+
 
     public static void main(String[] args) {
 
@@ -284,6 +275,8 @@ class Manager {
             System.out.println("\n"+ANSI_CYAN_BACKGROUND + ANSI_BLACK+"Queries: Start"+ ANSI_RESET + "\n");
 
 
+            System.out.println(ANSI_RED + "List of actors"+ ANSI_RESET);
+            ListAllActors(entityManager);
 
             System.out.println(ANSI_YELLOW+"Current title: " + movie1.getTitle() + "\n");
             System.out.println(ANSI_RED + "Change title to Hobbit"+ ANSI_RESET);
@@ -316,7 +309,15 @@ class Manager {
 
     }
 
-
+    static void ListAllActors(EntityManager entityManager){
+        System.out.println("-------");
+        List<Actor> actors = new Queries(entityManager).getActorList();
+        System.out.println("-------");
+        for(int i=0;i<=3;i++){
+            System.out.println(ANSI_GREEN +actors.get(i).getFirstName()+" "+actors.get(i).getLastName()+ ANSI_RESET);
+        }
+        System.out.println("-------");
+    }
 
     static void ChangeMovieTitle(EntityManager entityManager) {
         System.out.println("-------");
