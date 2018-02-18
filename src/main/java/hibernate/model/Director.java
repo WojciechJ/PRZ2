@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
         @UniqueConstraint(columnNames = {"Id"})})
 public class Director {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;
 

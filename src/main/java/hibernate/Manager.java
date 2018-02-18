@@ -1,10 +1,10 @@
 package hibernate;
 import hibernate.model.Actor;
-import hibernate.model.Film;
+import hibernate.model.Movie;
 import hibernate.model.Director;
 import hibernate.model.Employee;
-import hibernate.model.Film_Crew;
-import hibernate.model.Film_Cast;
+import hibernate.model.Movie_Cast;
+import hibernate.model.Movie_Crew;
 import hibernate.model.Profession;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -104,58 +104,62 @@ class Manager {
                 Employee emp1 = new Employee();
                     emp1.setFirstName("John");
                     emp1.setLastName("Dew");
-                    emp1.setProfession(1);
+                    emp1.setProfession(pro1);
                     emp1.setDateofbirth(ZonedDateTime.parse("1976-08-10T00:00:00+01:00[Europe/Warsaw]"));
                 entityManager.persist(emp1);
 
                 Employee emp2 = new Employee();
                     emp2.setFirstName("Julie");
                     emp2.setLastName("Roberts");
-                    emp2.setProfession(2);
+                    emp2.setProfession(pro2);
                     emp2.setDateofbirth(ZonedDateTime.parse("1991-11-16T00:00:00+01:00[Europe/Warsaw]"));
                 entityManager.persist(emp2);
 
                 Employee emp3 = new Employee();
                     emp3.setFirstName("Mark");
                     emp3.setLastName("House");
-                    emp3.setProfession(3);
+                    emp3.setProfession(pro3);
                     emp3.setDateofbirth(ZonedDateTime.parse("1988-07-21T00:00:00+01:00[Europe/Warsaw]"));
                 entityManager.persist(emp3);
 
             entityManager.getTransaction().commit();
             System.out.println(ANSI_GREEN + "Employees: End" + ANSI_RESET + "\n");
 
-            //-----------------------------------FILMS--------------------------------------
+            //-----------------------------------MOVIES--------------------------------------
             System.out.println(ANSI_RED + "Films: Start" + ANSI_RESET);
             entityManager.getTransaction().begin();
 
-                Film film1 = new Film();
-                    film1.setTitle("War for the Planet of the Apes");
-                    film1.setPremiereDate(ZonedDateTime.parse("2017-07-10T00:00:00+01:00[Europe/Warsaw]"));
-                    film1.setGenre("Drama, Action, Sci-Fi");
-                    film1.setBoxOffice(490664238.0);
-                entityManager.persist(film1);
+                Movie movie1 = new Movie();
+                    movie1.setTitle("War for the Planet of the Apes");
+                    movie1.setPremiereDate(ZonedDateTime.parse("2017-07-10T00:00:00+01:00[Europe/Warsaw]"));
+                    movie1.setGenre("Drama, Action, Sci-Fi");
+                    movie1.setBoxOffice(490664238.0);
+                    movie1.setDirectorid(dir2);
+                entityManager.persist(movie1);
 
-                Film film2 = new Film();
-                    film2.setTitle("The Lord of the Rings: The Return of the King ");
-                    film2.setPremiereDate(ZonedDateTime.parse("2004-01-04T00:00:00+01:00[Europe/Warsaw]"));
-                    film2.setGenre("Fanatsy, Drama, Action");
-                    film2.setBoxOffice(1119929521.0);
-                entityManager.persist(film2);
+                Movie movie2 = new Movie();
+                    movie2.setTitle("The Lord of the Rings: The Return of the King ");
+                    movie2.setPremiereDate(ZonedDateTime.parse("2004-01-04T00:00:00+01:00[Europe/Warsaw]"));
+                    movie2.setGenre("Fanatsy, Drama, Action");
+                    movie2.setBoxOffice(1119929521.0);
+                    movie2.setDirectorid(dir1);
+                entityManager.persist(movie2);
 
-                Film film3 = new Film();
-                    film3.setTitle("The Lord of The Rings: Two Towers");
-                    film3.setPremiereDate(ZonedDateTime.parse("2002-01-31T00:00:00+01:00[Europe/Warsaw]"));
-                    film3.setGenre("Fanatsy, Drama, Action");
-                    film3.setBoxOffice(926047111.0);
-                entityManager.persist(film3);
+                Movie movie3 = new Movie();
+                    movie3.setTitle("The Lord of The Rings: Two Towers");
+                    movie3.setPremiereDate(ZonedDateTime.parse("2002-01-31T00:00:00+01:00[Europe/Warsaw]"));
+                    movie3.setGenre("Fanatsy, Drama, Action");
+                    movie3.setBoxOffice(926047111.0);
+                    movie3.setDirectorid(dir1);
+                entityManager.persist(movie3);
 
-                Film film4 = new Film();
-                    film4.setTitle("The Lord of the Rings: The Fellowship of the Ring");
-                    film4.setPremiereDate(ZonedDateTime.parse("2001-12-10T00:00:00+01:00[Europe/Warsaw]"));
-                    film4.setGenre("Fanatsy, Drama, Action");
-                    film4.setBoxOffice(871530324.0);
-                entityManager.persist(film4);
+                Movie movie4 = new Movie();
+                    movie4.setTitle("The Lord of the Rings: The Fellowship of the Ring");
+                    movie4.setPremiereDate(ZonedDateTime.parse("2001-12-10T00:00:00+01:00[Europe/Warsaw]"));
+                    movie4.setGenre("Fanatsy, Drama, Action");
+                    movie4.setBoxOffice(871530324.0);
+                    movie4.setDirectorid(dir1);
+                entityManager.persist(movie4);
 
             entityManager.getTransaction().commit();
             System.out.println(ANSI_GREEN + "Films: End" + ANSI_RESET + "\n");
@@ -163,17 +167,17 @@ class Manager {
             System.out.println(ANSI_RED + "Crew: Start" + ANSI_RESET);
             entityManager.getTransaction().begin();
 
-                Film_Crew crw1 = new Film_Crew();
+                Movie_Crew crw1 = new Movie_Crew();
                     crw1.setFilmid(1);
                     crw1.setEmployeeid(1);
                 entityManager.persist(crw1);
 
-                Film_Crew crw2 = new Film_Crew();
+                Movie_Crew crw2 = new Movie_Crew();
                     crw2.setFilmid(1);
                     crw2.setEmployeeid(2);
                 entityManager.persist(crw2);
 
-                Film_Crew crw3 = new Film_Crew();
+                Movie_Crew crw3 = new Movie_Crew();
                     crw3.setFilmid(1);
                     crw3.setEmployeeid(3);
                 entityManager.persist(crw3);
@@ -185,67 +189,67 @@ class Manager {
             System.out.println(ANSI_RED + "Cast: Start" + ANSI_RESET);
             entityManager.getTransaction().begin();
 
-                Film_Cast cc1 = new Film_Cast();
+                Movie_Cast cc1 = new Movie_Cast();
                     cc1.setActorid(4);
                     cc1.setFilmid(1);
                 entityManager.persist(cc1);
 
-                Film_Cast cc2 = new Film_Cast();
+                Movie_Cast cc2 = new Movie_Cast();
                     cc2.setActorid(4);
                     cc2.setFilmid(2);
                 entityManager.persist(cc2);
 
-                Film_Cast cc3 = new Film_Cast();
+                Movie_Cast cc3 = new Movie_Cast();
                     cc3.setActorid(4);
                     cc3.setFilmid(3);
                 entityManager.persist(cc3);
 
-                Film_Cast cc4 = new Film_Cast();
+                Movie_Cast cc4 = new Movie_Cast();
                     cc4.setActorid(4);
                     cc4.setFilmid(4);
                 entityManager.persist(cc4);
 
-                Film_Cast cc5 = new Film_Cast();
+                Movie_Cast cc5 = new Movie_Cast();
                     cc5.setActorid(1);
                     cc5.setFilmid(1);
                 entityManager.persist(cc5);
 
-                Film_Cast cc6 = new Film_Cast();
+                Movie_Cast cc6 = new Movie_Cast();
                     cc6.setActorid(1);
                     cc6.setFilmid(2);
                 entityManager.persist(cc6);
 
-                Film_Cast cc7 = new Film_Cast();
+                Movie_Cast cc7 = new Movie_Cast();
                     cc7.setActorid(1);
                     cc7.setFilmid(3);
                 entityManager.persist(cc7);
 
-                Film_Cast cc8 = new Film_Cast();
+                Movie_Cast cc8 = new Movie_Cast();
                     cc8.setActorid(2);
                     cc8.setFilmid(1);
                 entityManager.persist(cc8);
 
-                Film_Cast cc9 = new Film_Cast();
+                Movie_Cast cc9 = new Movie_Cast();
                     cc9.setActorid(2);
                     cc9.setFilmid(2);
                 entityManager.persist(cc9);
 
-                Film_Cast cc10 = new Film_Cast();
+                Movie_Cast cc10 = new Movie_Cast();
                     cc10.setActorid(2);
                     cc10.setFilmid(3);
                 entityManager.persist(cc10);
 
-                Film_Cast cc11 = new Film_Cast();
+                Movie_Cast cc11 = new Movie_Cast();
                     cc11.setActorid(3);
                     cc11.setFilmid(3);
                 entityManager.persist(cc11);
 
-                Film_Cast cc12 = new Film_Cast();
+                Movie_Cast cc12 = new Movie_Cast();
                     cc12.setActorid(3);
                     cc12.setFilmid(2);
                 entityManager.persist(cc12);
 
-                Film_Cast cc13 = new Film_Cast();
+                Movie_Cast cc13 = new Movie_Cast();
                     cc13.setActorid(3);
                     cc13.setFilmid(1);
                 entityManager.persist(cc12);

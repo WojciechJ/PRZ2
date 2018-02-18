@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
         @UniqueConstraint(columnNames = {"Id"})})
 public class Employee {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;
 
@@ -20,9 +20,9 @@ public class Employee {
     @Column(name = "date_of_birth")
     private ZonedDateTime dateofbirth;
 
-    @Column(name = "profession")
-    private Integer profession;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profession", referencedColumnName = "id")
+    Profession profession;
 
     public Employee(){}
 
@@ -54,8 +54,8 @@ public class Employee {
         this.dateofbirth = dateofbirth;
     }
 
-    public Integer getProfession(){return profession;}
-    public void setProfession(Integer profession){this.profession = profession;}
+    public Profession getProfession(){return profession;}
+    public void setProfession(Profession profession){this.profession = profession;}
 
 
 

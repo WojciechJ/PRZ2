@@ -2,11 +2,11 @@ package hibernate.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "FILM_CAST", uniqueConstraints = {
+@Table(name = "MOVIE_CAST", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
-public class Film_Cast {
+public class Movie_Cast {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;
 
@@ -16,7 +16,7 @@ public class Film_Cast {
     @Column(name = "actor_id")
     private Integer actor_id;
 
-    public Film_Cast(){}
+    public Movie_Cast(){}
 
     public int getId() {
         return id;

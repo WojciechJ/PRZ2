@@ -6,7 +6,7 @@ import javax.persistence.*;
         @UniqueConstraint(columnNames = {"Id"})})
 public class Profession {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;
 

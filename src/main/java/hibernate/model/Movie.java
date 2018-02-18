@@ -3,11 +3,11 @@ import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "FILMS", uniqueConstraints = {
+@Table(name = "MOVIES", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"id"})})
-public class Film {
+public class Movie{
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;
 
@@ -17,17 +17,17 @@ public class Film {
     @Column(name = "premiere_date")
     private ZonedDateTime premiereDate;
 
-    @Column(name = "directorid")
-    private Integer directorid;
-
     @Column(name = "genre")
     private String genre;
 
     @Column(name = "box_office")
     private Double boxOffice;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "director", referencedColumnName = "id")
+    Director director;
 
-    public Film() {}
+    public Movie() {}
 
     public int getId() {
         return id;
@@ -54,8 +54,8 @@ public class Film {
         this.premiereDate = premiereDate;
     }
 
-    public Integer getDirectorid(){ return directorid; }
-    public void setDirectorid( Integer directorid) { this.directorid = directorid; }
+    public Director getDirectorid(){ return director; }
+    public void setDirectorid( Director director) { this.director = director; }
 
 
 
