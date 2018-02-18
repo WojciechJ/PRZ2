@@ -3,12 +3,16 @@ import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.*;
 
+
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="id", scope=Employee.class)
 @Entity
 @Table(name = "EMPLOYEES", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
 public class Employee {
 
+    @JsonIgnore
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;
@@ -19,8 +23,12 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
+    @JsonIgnore
     @Column(name = "date_of_birth")
     private ZonedDateTime dateofbirth;
+
+    @Column(name = "salary")
+    private int salary;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profession", referencedColumnName = "id")
@@ -61,6 +69,15 @@ public class Employee {
     public void setDateofbirth( ZonedDateTime dateofbirth ) {
         this.dateofbirth = dateofbirth;
     }
+
+    public int getSalary() {
+        return salary;
+    }
+    public void setSalary( int salary ) {
+        this.salary = salary;
+    }
+
+
 
     public Profession getProfession(){return profession;}
     public void setProfession(Profession profession){this.profession = profession;}

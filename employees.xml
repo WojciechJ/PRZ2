@@ -1,0 +1,35 @@
+<ArrayList>
+  <item>
+    <id>1</id>
+    <firstName>John</firstName>
+    <lastName>Dew</lastName>
+    <salary>1500</salary>
+    <profession>
+      <id>0</id>
+      <professionName>camera operator</professionName>
+    </profession>
+    <employee/>
+  </item>
+  <item>
+    <id>2</id>
+    <firstName>Julie</firstName>
+    <lastName>Roberts</lastName>
+    <salary>2000</salary>
+    <profession>
+      <id>0</id>
+      <professionName>make-up artist</professionName>
+    </profession>
+    <employee/>
+  </item>
+  <item>
+    <id>3</id>
+    <firstName>Mark</firstName>
+    <lastName>House</lastName>
+    <salary>2500</salary>
+    <profession>
+      <id>0</id>
+      <professionName>stuntman</professionName>
+    </profession>
+    <employee/>
+  </item>
+</ArrayList>

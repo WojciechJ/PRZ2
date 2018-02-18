@@ -1,0 +1,31 @@
+[ {
+  "id" : 1,
+  "firstName" : "John",
+  "lastName" : "Dew",
+  "salary" : 1500,
+  "profession" : {
+    "id" : 0,
+    "professionName" : "camera operator"
+  },
+  "employee" : [ ]
+}, {
+  "id" : 2,
+  "firstName" : "Julie",
+  "lastName" : "Roberts",
+  "salary" : 2000,
+  "profession" : {
+    "id" : 0,
+    "professionName" : "make-up artist"
+  },
+  "employee" : [ ]
+}, {
+  "id" : 3,
+  "firstName" : "Mark",
+  "lastName" : "House",
+  "salary" : 2500,
+  "profession" : {
+    "id" : 0,
+    "professionName" : "stuntman"
+  },
+  "employee" : [ ]
+} ]

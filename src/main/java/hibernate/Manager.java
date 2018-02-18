@@ -115,6 +115,7 @@ class Manager {
             emp1.setFirstName("John");
             emp1.setLastName("Dew");
             emp1.setProfession(pro1);
+            emp1.setSalary(1500);
             emp1.setDateofbirth(ZonedDateTime.parse("1976-08-10T00:00:00+01:00[Europe/Warsaw]"));
             entityManager.persist(emp1);
 
@@ -122,6 +123,7 @@ class Manager {
             emp2.setFirstName("Julie");
             emp2.setLastName("Roberts");
             emp2.setProfession(pro2);
+            emp2.setSalary(2000);
             emp2.setDateofbirth(ZonedDateTime.parse("1991-11-16T00:00:00+01:00[Europe/Warsaw]"));
             entityManager.persist(emp2);
 
@@ -129,6 +131,7 @@ class Manager {
             emp3.setFirstName("Mark");
             emp3.setLastName("House");
             emp3.setProfession(pro3);
+            emp3.setSalary(2500);
             emp3.setDateofbirth(ZonedDateTime.parse("1988-07-21T00:00:00+01:00[Europe/Warsaw]"));
             entityManager.persist(emp3);
 

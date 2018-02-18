@@ -1,12 +1,15 @@
 package hibernate.model;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import com.fasterxml.jackson.annotation.*;
 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="id", scope=Actor.class)
 @Entity
 @Table(name = "ACTORS", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"Id"})})
 public class Actor {
 
+    @JsonIgnore
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private int id;

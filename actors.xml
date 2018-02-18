@@ -1,0 +1,26 @@
+<ArrayList>
+  <item>
+    <id>1</id>
+    <firstName>Elijah</firstName>
+    <lastName>Wood</lastName>
+    <date_of_Birth/>
+  </item>
+  <item>
+    <id>2</id>
+    <firstName>Viggo</firstName>
+    <lastName>Mortensen</lastName>
+    <date_of_Birth/>
+  </item>
+  <item>
+    <id>3</id>
+    <firstName>Ian</firstName>
+    <lastName>McKellen</lastName>
+    <date_of_Birth/>
+  </item>
+  <item>
+    <id>4</id>
+    <firstName>Andy</firstName>
+    <lastName>Seriks</lastName>
+    <date_of_Birth/>
+  </item>
+</ArrayList>
