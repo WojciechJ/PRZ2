@@ -348,7 +348,7 @@ class Manager {
         System.out.println("-------");
         List<Movie> movies = new Queries(entityManager).getNumberOfMoviesBetween(ZonedDateTime.parse("2000-01-01T00:00:00+01:00[Europe/Warsaw]"),ZonedDateTime.parse( "2003-12-31T23:59:59+01:00[Europe/Warsaw]"));
         System.out.println("-------");
-        System.out.println(ANSI_GREEN +"Number of movies between 2000 and 2001: " + movies.get(0) + ANSI_RESET);
+        System.out.println(ANSI_GREEN +"Number of movies between 2000 and 2003: " + movies.get(0) + ANSI_RESET);
         System.out.println("-------");
     }
 
